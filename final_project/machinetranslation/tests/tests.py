@@ -1,33 +1,42 @@
+import unittest
 from machinetranslation import translator as tr
 
-#First random text from French to English
-test1 = tr.french_to_english("Le client est très important merci, le client sera suivi par le client. Énée n'a pas de justice, pas de résultat, pas de ligula, et la vallée veut la sauce.")
-print(test1)
+class test_translations(unittest.TestCase):
+    def test_f2e_1(self):
+        test = tr.french_to_english("Je vais a la boulangerie avec mon pere et mon mere.")
+        self.assertEqual(test,"I am going to the bakery with my father and my mother.")
 
-#Second random French test translated to English
-test2 = tr.french_to_english("Morbi mais qui veut vendre une couche de contenu triste d'internet. Être ivre maintenant, mais ne pas être ivre maintenant, mon urne est d'une grande beauté, mais elle n'est pas aussi bien faite que dans un livre. Mécène dans la vallée de l'orc, dans l'élément même. Certaines des exigences faciles du budget, qu'il soit beaucoup de temps pour dignissim et. Je ne m'en fais pas chez moi, ça va être moche dans le vestibule.")
-print(test2)
+    def test_f2e_2(self):
+        test = tr.french_to_english("J'aime la physique")
+        self.assertEqual(test,"I love physics")
 
-#First random English test translated to French
-test3 = tr.english_to_french("Gordon Ramsay has a project in a London prision where he opened up a business and teaches inmates how to bake. This gave the inmates the work experience they need when they finish their sentences.")
-print(test3)
+    def test_e2f_1(self):
+        test = tr.english_to_french("What does AI stands for?")
+        self.assertEqual(test,"Qu'est-ce que l'IA signifie?")
 
-#Second random English test translated to French
-test4 = tr.english_to_french("Dart frogs are known to be poisonous little frogs. However, when kept as pets, they are completely non-toxic. This is because their toxic coating comes from the bugs they eat in the wild.")
-print(test4)
+    def test_e2f_2(self):
+        test = tr.english_to_french("What am I supposed to code?")
+        self.assertEqual(test,"Qu'est-ce que je suis censé coder?")
 
-#Test a null input for the frenchToEnglish functio.
-test6 = tr.french_to_english()
-print(test6)
+    def test_null_1(self):
+        test = tr.french_to_english()
+        self.assertTrue(test is not None)
+        self.assertRaises(Exception)
+        self.assertNotEqual("Missing text input! Rerun the code with a text next time.",test)
 
-#Test a null input for the englishToFrench function
-test6 = tr.english_to_french()
-print(test6)
+    def test_null_2(self):
+        test = tr.english_to_french()
+        self.assertTrue(test is not None)
+        self.assertRaises(Exception)
+        self.assertNotEqual("Missing text input! Rerun the code with a text next time.",test)
 
-#Test the translation of a "Hello" input and verify if it is correctly translated to "Bonjour"
-test7 = tr.english_to_french("Hello")
-print(test7)
+    def test_hello(self):
+        test = tr.english_to_french("Hello")
+        self.assertEqual(test,"Bonjour")
 
-#Test the translation of a "Bonjour" input and verify if it is correctly translated to "Hello"
-test8 = tr.french_to_english("Bonjour")
-print(test8)
+    def test_bonjour(self):
+        test = tr.french_to_english("Bonjour")
+        self.assertEqual(test,"Hello")
+
+if __name__ == "__main__":
+    unittest.main()
