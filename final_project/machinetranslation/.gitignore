@@ -1,0 +1,2 @@
+#Ignore .env file, which contains the API Key and URL for the IBM Watson service API
+.env
